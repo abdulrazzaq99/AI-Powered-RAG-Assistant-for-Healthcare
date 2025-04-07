@@ -11,7 +11,7 @@ genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 # Load FAISS and Data
 @st.cache_resource
 def load_faiss_and_data():
-    df = pd.read_csv("chunks_with_embedding.csv")
+    df = pd.read_csv("chunks_with_embeddings.csv")
     embeddings = np.vstack(df['embedding'].apply(eval).to_numpy())
     index = faiss.read_index("faiss_index.index")
     return df, index
